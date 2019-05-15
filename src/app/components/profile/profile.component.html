@@ -1,0 +1,223 @@
+<!-- Begin page -->
+<div id="wrapper">
+  <app-header></app-header>
+  <app-sidebar selected="profile"></app-sidebar>
+
+  <div class="content-page">
+      <div class="content">
+
+          <!-- Start Content-->
+          <div class="container-fluid">
+
+              <!-- start page title -->
+              <div class="row">
+                  <div class="col-12">
+                      <div class="page-title-box">
+                          <div class="page-title-right">
+                              <ol class="breadcrumb m-0">
+                                  <li class="breadcrumb-item active">Profile</li>
+                              </ol>
+                          </div>
+                          <h4 class="page-title">Profile</h4>
+                      </div>
+                  </div>
+              </div>
+              <!-- end page title -->
+
+              <div class="row">
+                  <div class="col-lg-4 col-xl-4">
+                      <div class="card-box text-center">
+                            <form (ngSubmit)="onUpdateAvatar()">
+                                <input type="file" class="dropify"  data-show-remove="false" data-allowed-file-extensions="png jpg" [formControl]="file" (change)="handleFileInput($event.target.files)" id="listing-image"/>
+                                <button type="submit" class="btn btn-success btn-rounded waves-effect waves-light mt-2" data-style="zoom-out">Update</button>
+                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light mt-2 ml-3 remove_avatar" (click)="remove()" data-style="slide-left">Remove</button>
+                            </form>
+                            
+                          <h4 class="mb-0">{{profile_fullName}}</h4>
+
+                          <div class="text-left mt-3">
+                              <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{profile_fullName}}</span></p>
+
+                              <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{profile_phone}}</span></p>
+
+                              <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{profile_email}}</span></p>
+
+                              <p class="text-muted mb-1 font-13"><strong>Country :</strong> <span class="ml-2">{{profile_country}}</span></p>
+                          </div>
+
+                          <ul class="social-list list-inline mt-3 mb-0">
+                              <li class="list-inline-item">
+                                  <a routerLink="{{profile_facebook}}" class="social-list-item border-primary text-primary"><i
+                                          class="mdi mdi-facebook"></i></a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a routerLink="{{profile_twitter}}" class="social-list-item border-info text-info"><i
+                                          class="mdi mdi-twitter"></i></a>
+                              </li>
+                              <li class="list-inline-item">
+                                <a routerLink="{{profile_instagram}}" class="social-list-item border-success text-success"><i
+                                        class="mdi mdi-instagram"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a routerLink="{{profile_linkedin}}" class="social-list-item border-warning text-warning"><i
+                                            class="mdi mdi-linkedin"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a routerLink="{{profile_pinterests}}" class="social-list-item border-danger text-danger"><i
+                                            class="mdi mdi-pinterest"></i></a>
+                                </li>
+                          </ul>
+                      </div> <!-- end card-box -->
+                        <div class="card-box">
+                            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Change Password</h5>        
+                            <form (ngSubmit)="onChangePassword()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="firstname">Old Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter old password" [formControl]="current_pwd">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="firstname">New Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter new password" [formControl]="new_pwd">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="firstname">Confirm Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter confirm password" [formControl]="confirm_pwd">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light mt-2" data-style="slide-right"><i class="mdi mdi-content-save"></i> Change</button>
+                                </div>
+                            </form> 
+                        </div>
+                  </div> <!-- end col-->
+
+                  <div class="col-lg-8 col-xl-8">
+                      <div class="card-box">
+                          <div class="tab-content">
+
+                              <div class="tab-pane active" id="settings">
+                                  <form (ngSubmit)="onSubmit()"> 
+                                      <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Personal Info</h5>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="firstname">Full Name</label>
+                                                  <input type="text" class="form-control" placeholder="Enter Full name" [formControl]="fullName">
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="lastname">Phone</label>
+                                                  <input type="text" class="form-control" placeholder="Enter phone name" [formControl]="phone">
+                                              </div>
+                                          </div> <!-- end col -->
+                                      </div> <!-- end row -->
+
+                                      <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building mr-1"></i> Company Info</h5>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="companyname">Address</label>
+                                                  <input type="text" class="form-control" placeholder="Enter address" id="address" autocorrect="off" autocapitalized="off" spellcheck="off" #search [formControl]="address" >
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="cwebsite">Website</label>
+                                                  <input type="text" class="form-control" placeholder="Enter website url" [formControl]="website" >
+                                              </div>
+                                          </div> <!-- end col -->
+                                      </div> <!-- end row -->
+
+                                      <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth mr-1"></i> Social</h5>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="social-fb">Facebook</label>
+                                                  <div class="input-group">
+                                                      <div class="input-group-prepend">
+                                                          <span class="input-group-text"><i class="fab fa-facebook-square"></i></span>
+                                                      </div>
+                                                      <input type="text" class="form-control" id="social-fb" placeholder="Url" [formControl]="facebook">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="social-tw">Twitter</label>
+                                                  <div class="input-group">
+                                                      <div class="input-group-prepend">
+                                                          <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+                                                      </div>
+                                                      <input type="text" class="form-control" id="social-tw" placeholder="Username" [formControl]="twitter">
+                                                  </div>
+                                              </div>
+                                          </div> <!-- end col -->
+                                      </div> <!-- end row -->
+
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="social-insta">Instagram</label>
+                                                  <div class="input-group">
+                                                      <div class="input-group-prepend">
+                                                          <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+                                                      </div>
+                                                      <input type="text" class="form-control" id="social-insta" placeholder="Url" [formControl]="instagram">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="social-lin">Linkedin</label>
+                                                  <div class="input-group">
+                                                      <div class="input-group-prepend">
+                                                          <span class="input-group-text"><i class="fab fa-linkedin"></i></span>
+                                                      </div>
+                                                      <input type="text" class="form-control" id="social-lin" placeholder="Url" [formControl]="linkedin">
+                                                  </div>
+                                              </div>
+                                          </div> <!-- end col -->
+                                      </div> <!-- end row -->
+
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="social-sky">Pinterest</label>
+                                                  <div class="input-group">
+                                                      <div class="input-group-prepend">
+                                                          <span class="input-group-text"><i class="fab fa-pinterest"></i></span>
+                                                      </div>
+                                                      <input type="text" class="form-control" id="social-sky" placeholder="Url" [formControl]="pinterest">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div> <!-- end row -->
+                                      
+                                      <div class="text-right">
+                                          <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Save</button>
+                                      </div>
+                                  </form>
+                              </div>
+                              <!-- end settings content-->
+
+                          </div> <!-- end tab-content -->
+                      </div> <!-- end card-box-->
+
+                  </div> <!-- end col -->
+              </div>
+              <!-- end row-->
+
+          </div> <!-- container -->
+
+      </div> <!-- content -->
+
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left-side-menu">
+
+    <div class="slimscroll-menu">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <ul class="metismenu" id="side-menu">
+                <li>
+                    <a  [routerLink]="['/dashboard']" [ngClass]="{'active': selected==='dashboard'}" class="main-menu">
+                        <i class="fe-airplay"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                <li>
+                    <a  [routerLink]="['/profile']" [ngClass]="{'active': selected==='profile'}" class="main-menu">
+                        <i class="fe-airplay"></i>
+                        <span> Profile </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" [ngClass]="{'active': selected==='listing'}">
+                        <i class="fe-pocket"></i>
+                        <span> Listing </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li [ngClass]="{'active': subselected==='creating'}">
+                            <a [routerLink]="['/listing/create']" [ngClass]="{'active': subselected==='creating'}">Creating Listing</a>
+                        </li>
+                        <li [ngClass]="{'active': subselected==='all'}">
+                            <a [routerLink]="['/listing/table']" [ngClass]="{'active': subselected==='all'}">All Listing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a [routerLink]="['/review']"  [ngClass]="{'active': selected==='review'}">
+                        <i class="fe-airplay"></i>
+                        <span> Reviews </span>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/message']" [ngClass]="{'active': selected==='message'}">
+                        <i class="fe-airplay"></i>
+                        <span> Messages </span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
+
+    </div>
+    <!-- Sidebar -left -->
+
+</div>

@@ -1,0 +1,371 @@
+<!-- Begin page -->
+<div id="wrapper">
+  <app-header></app-header>
+  <app-sidebar selected="listing" subselected="all"></app-sidebar>
+
+  <!-- Main Content -->
+  <div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item active">Table</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Listing Table</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Search Query</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox1" type="checkbox" [formControl]="check_q">
+                                            <label for="checkbox1" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" [formControl]="search_q">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Max Price</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox2" type="checkbox" [formControl]="check_maxPrice">
+                                            <label for="checkbox2" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="number" [formControl]="search_maxPrice" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Min Price</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox3" type="checkbox" [formControl]="check_minPrice">
+                                            <label for="checkbox3" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="number" [formControl]="search_minPrice" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Sort Type</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox4" type="checkbox" [formControl]="check_sortType">
+                                            <label for="checkbox4" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <select class="form-control" [formControl]="search_sortType">
+                                            <option value="date">Date</option>
+                                            <option value="popular">Popular</option>
+                                            <option value="rating">Rating</option>
+                                            <option value="priceLowToHigh">Price Low to High</option>
+                                            <option value="priceHighToLow">Price High to Low</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Listing Start Date</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox5" type="checkbox" [formControl]="check_startDate">
+                                            <label for="checkbox5" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="date" class="form-control" [formControl]="search_startDate">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Listing End Date</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox6" type="checkbox" [formControl]="check_endDate">
+                                            <label for="checkbox6" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="date" class="form-control" [formControl]="search_endDate">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Property Style </label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox7" type="checkbox" [formControl]="check_propertyStyle">
+                                            <label for="checkbox7" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" [formControl]="search_propertyStyle">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Building Type </label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox8" type="checkbox" [formControl]="check_buildingType">
+                                            <label for="checkbox8" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" [formControl]="search_buildingType">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="firstname">Beds</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox9" type="checkbox" [formControl]="check_beds">
+                                            <label for="checkbox9" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="number" [formControl]="search_beds" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="firstname">Baths</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox10" type="checkbox" [formControl]="check_baths">
+                                            <label for="checkbox10" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="number" [formControl]="search_baths" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="firstname">Distance(km)</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox11" type="checkbox" [formControl]="check_distance">
+                                            <label for="checkbox11" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="number" [formControl]="search_distance" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="firstname">Postal Code</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox12" type="checkbox" [formControl]="check_postalCode">
+                                            <label for="checkbox12" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="text" [formControl]="search_postalCode" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="firstname">Key</label>
+                                        <div class="checkbox checkbox-primary" style="display: inline-block; margin-left: 10px;">
+                                            <input id="checkbox13" type="checkbox" [formControl]="check_key">
+                                            <label for="checkbox13" class="custom-ck">
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" [formControl]="search_key">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-success waves-effect waves-light mt-3">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <table id="alternative-page-datatable" class="table-borderless table table-bordered table-hover" style="display: table;">
+                          <thead class="thead-light">
+                              <tr>
+                                  <th>Photo</th>
+                                  <th>Title</th>
+                                  <th>Visible</th>
+                                  <th>Date</th>
+                                  <th>Country</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of listings" >
+                              <td *ngIf="item.images.length > 0"><img src="{{item.images[0].imageUrl}}" width="50px;"></td>
+                              <td *ngIf="item.images.length == 0"></td>
+                              <td>{{item.title}}</td>
+                              <td>{{item.visible}}</td>
+                              <td>{{item.dateCreated}}</td>
+                              <td>{{item.country}}</td>
+                              <td>
+                                <button type="button" class="btn btn-blue waves-effect waves-light mr-1" routerLink="/listing/detail/{{item.id}}"><i class="mdi mdi-settings"></i></button>
+                                <button type="button" (click)="setListingId(item.id)" class="btn btn-success waves-effect waves-light mr-1" data-toggle="modal" data-target="#review-modal">
+                                  <i class="mdi mdi-heart-half-full"></i>
+                                </button>
+                                <button type="button" (click)="setListingId(item.id)" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#message-modal">
+                                  <i class="mdi mdi-message-text"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="fixed-table-pagination">
+                            <div class="float-right pagination">
+                                <ul class="pagination">
+                                    <li class="page-item page-pre">
+                                        <a class="page-link" href="javascript: void(0);" (click)="gotoBeforePage()">‹</a>
+                                    </li>
+                                    <li class="page-item page" *ngFor="let item of paginations; let i = index" [ngClass]="{'active': i===0}">
+                                        <a class="page-link pageItem" href="javascript: void(0);" (click)="gotoPage(i)">{{item.pageNum}}</a>
+                                    </li>
+                                    <li class="page-item page-next">
+                                        <a class="page-link" href="javascript: void(0);" (click)="gotoNextPage()">›</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="review-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Add Review</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <form (ngSubmit)="onAddReview()">
+              <div class="modal-body p-4">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="field-1" class="control-label">Title</label>
+                              <input type="text" class="form-control" placeholder="Title" [formControl]="title">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="field-3" class="control-label">Message</label>
+                              <textarea class="form-control" rows="5" placeholder="Write something about listing" [formControl]="message"></textarea>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="field-4" class="control-label">Name</label>
+                              <input type="text" class="form-control" placeholder="Name" [formControl]="name">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="field-5" class="control-label">Email</label>
+                              <input type="text" class="form-control" placeholder="Email" [formControl]="email">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-8">
+                          <div class="form-group">
+                              <label for="field-4" class="control-label">Website</label>
+                              <input type="text" class="form-control" placeholder="Name" [formControl]="website">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <label for="field-4" class="control-label">Rating</label>
+                        <div id="rateBox"></div>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+              </div>
+          </form>
+          
+      </div>
+  </div>
+</div>
+
+<div id="message-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Message</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form (ngSubmit)="onAddMessage()">
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">From Email</label>
+                                <input type="email" class="form-control" placeholder="From Email" [formControl]="fromEmail">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">To Email</label>
+                                <input type="email" class="form-control" placeholder="To Email" [formControl]="toEmail">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Name</label>
+                                <input type="text" class="form-control" placeholder="Name" [formControl]="name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-5" class="control-label">Phone</label>
+                                <input type="text" class="form-control" placeholder="Phone" [formControl]="phone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Subject</label>
+                                <input type="text" class="form-control" placeholder="Subject" [formControl]="subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-4" class="control-label">Message</label>
+                                <textarea class="form-control" rows=5 [formControl]="message" placeholder="Write message about this listing"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,106 @@
+<!-- Begin page -->
+<div id="wrapper">
+    <app-header></app-header>
+    <app-sidebar selected="review"></app-sidebar>
+  
+    <div class="content-page">
+        <div class="content">
+  
+            <!-- Start Content-->
+            <div class="container-fluid">
+  
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active">Review</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Review Detail</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+  
+                <div class="row">
+  
+                    <div class="col-lg-12 col-xl-12">
+                        <div class="card-box">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="settings">
+                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Review Info</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">Title</label>
+                                                <input type="text" class="form-control" [formControl]="title" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="lastname">Message</label>
+                                                <textarea class="form-control" rows="5" [formControl]="message" readonly></textarea>
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row -->
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="lastname">Name</label>
+                                                <input type="text" class="form-control" [formControl]="name" readonly>
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="lastname">Email</label>
+                                                <input type="text" class="form-control" [formControl]="email" readonly>
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">Website</label>
+                                                <input type="text" class="form-control" [formControl]="website" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">Rating</label>
+                                                <div id="rateBox"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1 mr-2 publish nonvisible">
+                                            <div class="form-group">
+                                                <button class="ladda-button btn btn-primary publish_btn" type="button" data-style="expand-right" (click)="publish()" >
+                                                    Publish
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 unpublish nonvisible">
+                                            <div class="form-group">
+                                                <button class="ladda-button btn btn-primary unpublish_btn" type="button" data-style="expand-right" (click)="unpublish()" >
+                                                    Unpublish
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end settings content-->
+                            </div> <!-- end tab-content -->
+                        </div> <!-- end card-box-->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row-->
+            </div> <!-- container -->
+        </div> <!-- content -->
+    </div>
+  </div>

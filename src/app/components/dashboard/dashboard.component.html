@@ -1,0 +1,177 @@
+<!-- Begin page -->
+<div id="wrapper">
+    <app-header></app-header>
+    <app-sidebar selected="dashboard"></app-sidebar>
+
+    <!-- Main Content -->
+  <div class="content-page">
+      <div class="content">
+        <div class="container-fluid">
+          <!-- start page title -->
+          <div class="row">
+              <div class="col-12">
+                  <div class="page-title-box">
+                      <div class="page-title-right">
+                          <ol class="breadcrumb m-0">
+                              <li class="breadcrumb-item active">Dashboard</li>
+                          </ol>
+                      </div>
+                      <h4 class="page-title">Dashboard</h4>
+                  </div>
+              </div>
+          </div>
+          <!-- end page title -->
+          <div class="row">
+              <div class="col-12">
+                  <div class="card">
+                      <div class="card-body">
+                          <h4>Active Listings</h4>
+                          <table id="alternative-page-datatable" class="table-borderless table table-bordered table-hover" style="display: table;">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Title</th>
+                                    <th>Visible</th>
+                                    <th>Date</th>
+                                    <th>Country</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of listings" >
+                                <td *ngIf="item.images.length > 0"><img src="{{item.images[0].imageUrl}}" width="50px;"></td>
+                                <td *ngIf="item.images.length == 0"></td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.visible}}</td>
+                                <td>{{item.dateCreated}}</td>
+                                <td>{{item.country}}</td>
+                                <td>
+                                  <button type="button" class="btn btn-blue waves-effect waves-light mr-1" routerLink="/listing/detail/{{item.id}}"><i class="mdi mdi-settings"></i></button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="fixed-table-pagination">
+                              <div class="float-right pagination">
+                                  <ul class="pagination">
+                                      <li class="page-item page-pre">
+                                          <a class="page-link" href="javascript: void(0);" (click)="gotoBeforeListingPage()">‹</a>
+                                      </li>
+                                      <li class="page-item page" *ngFor="let item of listing_paginations; let i = index" [ngClass]="{'active': i===0}">
+                                          <a class="page-link pageItem" href="javascript: void(0);" (click)="gotoListingPage(i)">{{item.pageNum}}</a>
+                                      </li>
+                                      <li class="page-item page-next">
+                                          <a class="page-link" href="javascript: void(0);" (click)="gotoNextListingPage()">›</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-12">
+                  <div class="card">
+                      <div class="card-body">
+                          <h4>Recent reviews</h4>
+                          <table id="alternative-page-datatable" class="table-borderless table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Website</th>
+                                    <th>Rating</th>
+                                    <th>Message</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of reviews; let i = index" >
+                                <td>{{item.title}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.website}}</td>
+                                <td>{{item.rating}}</td>
+                                <td>{{item.message}}</td>
+                                <td>
+                                  <button type="button" class="btn btn-blue waves-effect waves-light mr-1" routerLink="/review/detail/{{item.id}}"><i class="mdi mdi-settings"></i></button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                            <div class="fixed-table-pagination" >
+                                <div class="float-right review-pagination">
+                                    <ul class="pagination">
+                                        <li class="page-item page-pre">
+                                            <a class="page-link" href="javascript: void(0);" (click)="gotoBeforeReviewPage()">‹</a>
+                                        </li>
+                                        <li class="page-item page" *ngFor="let item of review_paginations; let i = index" [ngClass]="{'active': i===0}">
+                                            <a class="page-link pageItem" href="javascript: void(0);" (click)="gotoReviewPage(i)">{{item.pageNum}}</a>
+                                        </li>
+                                        <li class="page-item page-next">
+                                            <a class="page-link" href="javascript: void(0);" (click)="gotoNextReviewPage()">›</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-12">
+                  <div class="card">
+                      <div class="card-body">
+                        <h4>Recent Messages</h4>
+                          <table id="alternative-page-datatable" class="table-borderless table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>From Email</th>
+                                    <th>To Email</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of messages; let i = index" >
+                                <td>{{item.fromEmail}}</td>
+                                <td>{{item.toEmail}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.subject}}</td>
+                                <td>{{item.msg}}</td>
+                                <td>
+                                  <button type="button" class="btn btn-blue waves-effect waves-light mr-1" routerLink="/message/detail/{{item.id}}"><i class="mdi mdi-settings"></i></button>
+
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                            <div class="fixed-table-pagination">
+                                <div class="float-right pagination">
+                                    <ul class="pagination message-pagination">
+                                        <li class="page-item page-pre">
+                                            <a class="page-link" href="javascript: void(0);" (click)="gotoBeforeReviewPage()">‹</a>
+                                        </li>
+                                        <li class="page-item page" *ngFor="let item of message_paginations; let i = index" [ngClass]="{'active': i===0}">
+                                            <a class="page-link pageItem" href="javascript: void(0);" (click)="gotoMessagePage(i)">{{item.pageNum}}</a>
+                                        </li>
+                                        <li class="page-item page-next">
+                                            <a class="page-link" href="javascript: void(0);" (click)="gotoNextMessagePage()">›</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

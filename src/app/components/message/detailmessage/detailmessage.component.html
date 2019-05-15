@@ -1,0 +1,88 @@
+<!-- Begin page -->
+<div id="wrapper">
+    <app-header></app-header>
+    <app-sidebar selected="message"></app-sidebar>
+  
+    <div class="content-page">
+        <div class="content">
+  
+            <!-- Start Content-->
+            <div class="container-fluid">
+  
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active">Message</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Message Detail</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+  
+                <div class="row">
+  
+                    <div class="col-lg-12 col-xl-12">
+                        <div class="card-box">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="settings">
+                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Message Info</h5>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="firstname">From Email</label>
+                                                <input type="text" class="form-control" [formControl]="fromEmail" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="firstname">To Email</label>
+                                                <input type="text" class="form-control" [formControl]="toEmail" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="firstname">Name</label>
+                                                <input type="text" class="form-control" [formControl]="name" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="firstname">Phone</label>
+                                                <input type="text" class="form-control" [formControl]="phone" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="firstname">Subject</label>
+                                                <input type="text" class="form-control" [formControl]="subject" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="lastname">Message</label>
+                                                <textarea class="form-control" rows="5" [formControl]="message" readonly></textarea>
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row -->
+                                </div>
+                                <!-- end settings content-->
+                            </div> <!-- end tab-content -->
+                        </div> <!-- end card-box-->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row-->
+            </div> <!-- container -->
+        </div> <!-- content -->
+    </div>
+  </div>

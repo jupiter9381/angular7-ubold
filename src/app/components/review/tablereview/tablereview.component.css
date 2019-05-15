@@ -1,0 +1,10 @@
+.custom-ck::before{
+    top: -5px;
+}
+.custom-ck::after{
+    top: -10px !important;
+}
+
+.fixed-table-pagination div.pagination{
+    margin-top: 0px;
+}
